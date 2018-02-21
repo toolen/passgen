@@ -2,15 +2,13 @@ FROM python:3.6-alpine
 
 LABEL maintainer="dmitry@zaharov.spb.ru"
 
-COPY ./passgen /app
-COPY requirements.txt /app/requirements.txt
+COPY ./passgen /passgen
+COPY requirements.txt .
 
-WORKDIR /app
+WORKDIR .
 
 RUN pip install -r requirements.txt
 
-ENTRYPOINT ["python"]
+CMD ["gunicorn", "-b", "0.0.0.0:80", "passgen.app:application"]
 
-CMD ["gunicorn", "-w", "4", "app:application"]
-
-EXPOSE 8000
+EXPOSE 80
