@@ -1,6 +1,6 @@
 FROM python:3.6-alpine
 
-LABEL maintainer="dmitry@zaharov.spb.ru"
+LABEL maintainer="dmitry@zakharov.spb.ru"
 
 COPY ./passgen /passgen
 COPY requirements.txt .
