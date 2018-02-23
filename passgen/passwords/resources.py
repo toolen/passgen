@@ -20,5 +20,5 @@ class PasswordsResource(object):
         except AssertionError as exc:
             raise falcon.HTTPInvalidParam(str(exc), 'length')
 
-        resp.body = json.dumps(password, ensure_ascii=False)
+        resp.body = json.dumps({'password': password}, ensure_ascii=False)
         resp.status = falcon.HTTP_200

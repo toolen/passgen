@@ -1,10 +1,7 @@
 import falcon
-from falcon_cors import CORS
 
-from passgen.passwords.resources import PasswordsResource
-
-cors = CORS(allow_all_origins=True, allow_all_headers=True,
-            allow_methods_list=['OPTIONS', 'GET'])
+from .cors import cors
+from .passwords.resources import PasswordsResource
 
 application = falcon.API(middleware=[cors.middleware])
 

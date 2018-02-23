@@ -7,7 +7,7 @@ def test_get_password_wo_length_param(client, password_resource_url):
     result = client.simulate_get(password_resource_url)
 
     assert result.status_code == 200
-    password = result.json
+    password = result.json.get('password')
     assert type(password) is str
     assert len(password) == DEFAULT_LENGTH
 
