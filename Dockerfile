@@ -1,13 +1,15 @@
-FROM python:3.6-alpine
+FROM alpine:latest
 
-LABEL maintainer="dmitry@zakharov.spb.ru"
+LABEL maintainer="dmitrij@zakharov.cc"
 
 COPY ./passgen /passgen
 COPY requirements.txt .
 
 WORKDIR .
 
-RUN pip install -r requirements.txt
+RUN apk add --no-cache \
+        python3 && \
+        pip3 install --no-cache-dir -r requirements.txt
 
 CMD ["gunicorn", "-b", "0.0.0.0:80", "passgen.app:application"]
 
