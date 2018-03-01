@@ -3,7 +3,7 @@ FROM alpine:latest
 LABEL maintainer="dmitrij@zakharov.cc"
 
 COPY ./passgen /passgen
-COPY requirements.txt .
+COPY requirements/prod.txt requirements.txt
 
 WORKDIR .
 
