@@ -4,7 +4,7 @@ python:
   - "3.6-dev"
   - "3.7-dev"
 install:
-  - pip install -r requirements.txt
+  - pip install -r requirements/dev.txt
 script:
   - flake8 --ignore E501 passgen tests
   - pytest
