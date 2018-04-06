@@ -1,6 +1,6 @@
 FROM alpine:latest
 
-LABEL maintainer="dmitrij@zakharov.cc"
+LABEL maintainer="dmitrii@zakharov.cc"
 
 COPY ./passgen /passgen
 COPY requirements/prod.txt requirements.txt
