@@ -11,3 +11,6 @@ tests/
 # Environments
 .env
 venv/
+
+# Docs
+docs/
