@@ -12,6 +12,9 @@ Welcome to passgen's documentation!
 .. image:: https://coveralls.io/repos/github/toolen/passgen/badge.svg?branch=master
     :target: https://coveralls.io/github/toolen/passgen?branch=master
 
+.. image:: https://readthedocs.org/projects/passgen/badge/?version=master
+    :target: http://passgen.readthedocs.io/en/master
+
 .. image:: https://img.shields.io/github/license/toolen/passgen.svg
     :target: https://github.com/toolen/passgen/blob/master/LICENSE
 
