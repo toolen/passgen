@@ -2,11 +2,13 @@ import json
 
 import falcon
 
+from passgen import settings
 from .constants import DEFAULT_LENGTH
 from .services import get_password
 
 
 class PasswordsResource(object):
+    cors_enabled = settings.CORS_ENABLED
 
     @staticmethod
     def on_get(req, resp):
