@@ -11,4 +11,4 @@ def client():
 
 @pytest.fixture()
 def password_resource_url():
-    return '/passgen/api/v1/passwords'
+    return '/api/v1/passwords'
