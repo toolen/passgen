@@ -6,6 +6,7 @@ A simple service for generating passwords with guaranteed presence of uppercase 
 [![Coverage Status](https://coveralls.io/repos/github/toolen/passgen/badge.svg?branch=master)](https://coveralls.io/github/toolen/passgen?branch=master)
 [![Documentation Status](https://readthedocs.org/projects/passgen/badge/?version=master)](http://passgen.readthedocs.io/en/master/?badge=master)
 [![License](https://img.shields.io/github/license/toolen/passgen.svg)](https://github.com/toolen/passgen/blob/master/LICENSE)
+[![Docker Image](https://images.microbadger.com/badges/image/toolen/passgen.svg)](https://microbadger.com/images/toolen/passgen)
 
 ## Try
 
