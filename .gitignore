@@ -13,3 +13,6 @@ venv/
 
 # Docs
 docs/build
+
+# IDE
+.idea/

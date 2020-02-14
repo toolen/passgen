@@ -1,11 +1,19 @@
 language: python
 python:
   - "3.6"
-  - "3.6-dev"
-  - "3.7-dev"
+  - "3.7"
+  - "3.8"
+  - "3.8-dev"
+  - "nightly"
+services:
+  - docker
 install:
-  - pip install -r requirements/dev.txt
+  - pip install --require-hashes -r requirements/requirements.txt
+  - pip install --require-hashes -r requirements/dev-requirements.txt
 script:
   - flake8 --ignore E501 passgen tests
   - py.test --cov=passgen tests/
   - coveralls
+  - docker build -t toolen/passgen:latest .
+  - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin
+  - docker push toolen/passgen:latest
