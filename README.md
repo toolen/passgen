@@ -17,7 +17,7 @@ A simple service for generating passwords with guaranteed presence of uppercase 
 You can use AJAX to call the passgen API and will receive a randomly generated password in return.
 
 ```
-https://zakharov.cc/passgen/api/v1/passwords
+https://passgen.zakharov.cc/api/v1/passwords
 ```
 
 ### Results
@@ -41,7 +41,7 @@ If API service experiencing server issues, we'll return a simple JSON object wit
 You can specify a length of generated password by adding the "length" parameter to your request. Valid values for the parameter from 4 to 254. If parameter not specified default values is 6.
 
 ```
-https://zakharov.cc/passgen/api/v1/passwords/?length=6
+https://passgen.zakharov.cc/api/v1/passwords/?length=6
 ```
 
 ## Settings
