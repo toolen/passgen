@@ -1,4 +1,6 @@
-from falcon_cors import CORS
+import aiohttp_cors
+from aiohttp import web
+from aiohttp_cors import CorsConfig, ResourceOptions
 
 default_headers = (
     'accept',
@@ -13,14 +15,21 @@ default_headers = (
 )
 
 default_methods = (
-    'DELETE',
+    # 'DELETE',
     'GET',
     'OPTIONS',
-    'PATCH',
-    'POST',
-    'PUT',
+    # 'PATCH',
+    # 'POST',
+    # 'PUT',
 )
 
-cors = CORS(allow_all_origins=True,
-            allow_headers_list=default_headers,
-            allow_methods_list=default_methods)
+
+def init_cors(app: web.Application) -> CorsConfig:
+    cors = aiohttp_cors.setup(app, defaults={
+        '*': ResourceOptions(
+            allow_headers=default_headers,
+            allow_methods=default_methods
+        )
+    })
+
+    return cors

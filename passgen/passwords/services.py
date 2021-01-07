@@ -3,11 +3,22 @@ import secrets
 from .constants import MIN_LENGTH, MAX_LENGTH, ALPHABET, REQUIRED_SEQUENCES
 
 
+def validate_length(length):
+    if length is None:
+        raise AssertionError('Must be not None')
+
+    if type(length) is not int:
+        raise AssertionError('Must be an integer')
+
+    if length < MIN_LENGTH:
+        raise AssertionError(f'Less than the minimum length {MIN_LENGTH}.')
+
+    if length > MAX_LENGTH:
+        raise AssertionError(f'Greater than the maximum length {MAX_LENGTH}')
+
+
 def get_password(length):
-    assert length is not None, 'Must be not None'
-    assert type(length) is int, 'Must be an integer'
-    assert length >= MIN_LENGTH, 'Less than the minimum length {0}.'.format(MIN_LENGTH)
-    assert length <= MAX_LENGTH, 'Greater than the maximum length {0}'.format(MAX_LENGTH)
+    validate_length(length)
 
     password = []
     for _ in range(0, length):

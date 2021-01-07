@@ -1,14 +1,9 @@
 import pytest
-from falcon import testing
 
-from passgen.app import application
-
-
-@pytest.fixture()
-def client():
-    return testing.TestClient(application)
+from passgen.app import create_app
 
 
-@pytest.fixture()
-def password_resource_url():
-    return '/api/v1/passwords'
+@pytest.fixture
+async def client(aiohttp_client):
+    app = await create_app()
+    return await aiohttp_client(app)

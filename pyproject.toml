@@ -1,0 +1,25 @@
+[tool.poetry]
+name = "passgen"
+version = "2.0.0"
+description = "A simple service for generating passwords with guaranteed presence of uppercase and lowercase letters, numbers and special characters."
+authors = ["Dmitrii Zakharov <dmitrii@zakharov.cc>"]
+license = "MIT"
+
+[tool.poetry.dependencies]
+python = "^3.8"
+aiohttp = "^3.7.3"
+aiohttp_cors = "^0.7.0"
+gunicorn = "^20.0.4"
+certifi = "^2020.12.5"
+
+[tool.poetry.dev-dependencies]
+pytest-aiohttp = "^0.3.0"
+aiohttp-devtools = "^0.13.1"
+pytest-cov = "^2.10.1"
+coveralls = "^2.2.0"
+flake8 = "^3.8.4"
+Sphinx = "^3.4.2"
+
+[build-system]
+requires = ["poetry-core>=1.0.0"]
+build-backend = "poetry.core.masonry.api"

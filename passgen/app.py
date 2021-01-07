@@ -1,9 +1,18 @@
-import falcon
+from aiohttp import web
+from aiohttp.abc import Application
 
-from .cors import cors
-from .passwords.resources import PasswordsResource
+from passgen.cors import init_cors
+from passgen.routes import init_routes, init_routes_with_cors
+from passgen.settings import CORS_ENABLED
 
-application = falcon.API(middleware=[cors.middleware])
 
-passwords = PasswordsResource()
-application.add_route('/api/v1/passwords', passwords)
+async def create_app() -> web.Application:
+    app: Application = web.Application()
+
+    if CORS_ENABLED:
+        cors = init_cors(app)
+        init_routes_with_cors(app, cors)
+    else:
+        init_routes(app)
+
+    return app
