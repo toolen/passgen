@@ -67,13 +67,5 @@ GUNICORN_CMD_ARGS="--bind=127.0.0.1:8080 --workers=3"
 ### Docker
 
 ```
-docker run -d -p 80:80 --restart always toolen/passgen:latest
-```
-
-## Development
-```shell
-virtualenv --python python3.7 --prompt "(passgen) " venv
-. venv/bin/activate
-pip install --require-hashes -r requirements/requirements.txt
-pip install --require-hashes -r requirements/dev-requirements.txt
+docker run -d -p 80:8080 --restart always toolen/passgen:2.0.0
 ```
