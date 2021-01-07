@@ -1,8 +1,8 @@
 language: python
 python:
   - "3.8"
-services:
-  - docker
+#services:
+#  - docker
 before_install:
   - pip install poetry
 install:
