@@ -41,6 +41,8 @@ jobs:
           flake8 --ignore E501 passgen tests
 
       - name: Test with pytest
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
           source .venv/bin/activate
           py.test --cov=passgen tests/
