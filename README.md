@@ -2,7 +2,7 @@
 
 A simple service for generating passwords with guaranteed presence of uppercase and lowercase letters, numbers and special characters.
 
-[![Build Status](https://travis-ci.org/toolen/passgen.svg?branch=master)](https://travis-ci.org/toolen/passgen)
+[![CI](https://github.com/toolen/passgen/workflows/CI/badge.svg)](https://github.com/toolen/passgen/workflows/CI/badge.svg)
 [![Coverage Status](https://coveralls.io/repos/github/toolen/passgen/badge.svg?branch=master)](https://coveralls.io/github/toolen/passgen?branch=master)
 [![Documentation Status](https://readthedocs.org/projects/passgen/badge/?version=master)](http://passgen.readthedocs.io/en/master/?badge=master)
 [![License](https://img.shields.io/github/license/toolen/passgen.svg)](https://github.com/toolen/passgen/blob/master/LICENSE)
