@@ -1,20 +1,20 @@
 import secrets
 
-from .constants import MIN_LENGTH, MAX_LENGTH, ALPHABET, REQUIRED_SEQUENCES
+from .constants import ALPHABET, MAX_LENGTH, MIN_LENGTH, REQUIRED_SEQUENCES
 
 
 def validate_length(length):
     if length is None:
-        raise AssertionError('Must be not None')
+        raise AssertionError("Must be not None")
 
     if type(length) is not int:
-        raise AssertionError('Must be an integer')
+        raise AssertionError("Must be an integer")
 
     if length < MIN_LENGTH:
-        raise AssertionError(f'Less than the minimum length {MIN_LENGTH}.')
+        raise AssertionError(f"Less than the minimum length {MIN_LENGTH}.")
 
     if length > MAX_LENGTH:
-        raise AssertionError(f'Greater than the maximum length {MAX_LENGTH}')
+        raise AssertionError(f"Greater than the maximum length {MAX_LENGTH}")
 
 
 def get_password(length):
@@ -30,4 +30,4 @@ def get_password(length):
         idx_list.remove(idx)
         password[idx] = secrets.choice(sequence)
 
-    return ''.join(password)
+    return "".join(password)

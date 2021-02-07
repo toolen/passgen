@@ -1,18 +1,15 @@
 from aiohttp import web
-from aiohttp.abc import Application
 
 from passgen.cors import init_cors
-from passgen.routes import init_routes, init_routes_with_cors
-from passgen.settings import CORS_ENABLED
+from passgen.routes import init_routes
+from passgen.settings import init_settings
 
 
-async def create_app() -> web.Application:
-    app: Application = web.Application()
-
-    if CORS_ENABLED:
-        cors = init_cors(app)
-        init_routes_with_cors(app, cors)
-    else:
-        init_routes(app)
+async def create_app(settings=None) -> web.Application:
+    app: web.Application = web.Application()
+    app = init_settings(app, settings)
+    init_routes(app)
+    if app["settings"]["cors_enabled"]:
+        init_cors(app)
 
     return app

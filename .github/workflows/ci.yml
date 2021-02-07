@@ -35,15 +35,27 @@ jobs:
         run: poetry install
         if: steps.cached-poetry-dependencies.outputs.cache-hit != 'true'
 
-      - name: Lint with flake8
-        run: |
-          source .venv/bin/activate
-          flake8 --ignore E501 passgen tests
+      - name: Run black
+        run: poetry run black . --check
+
+      - name: Run isort
+        run: poetry run isort . --check-only
+
+      - name: Run flake8
+        run: poetry run flake8 passgen/ tests/
+
+      - name: Run bandit
+        run: poetry run bandit .
+
+      - name: Run bandit
+        run: poetry run bandit .
+
+      - name: Run saftey
+        run: poetry run safety check
 
       - name: Test with pytest
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
-          source .venv/bin/activate
-          py.test --cov=passgen tests/
-          coveralls
+          poetry run pytest --cov=passgen tests/
+          poetry run coveralls
