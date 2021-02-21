@@ -1,10 +1,11 @@
 from aiohttp import web
+from aiohttp.web_response import Response
 
 from .constants import DEFAULT_LENGTH
 from .services import get_password
 
 
-async def passwords(request: web.Request):
+async def passwords(request: web.Request) -> Response:
     try:
         length_str = request.rel_url.query.get("length", DEFAULT_LENGTH)
         length = int(length_str)

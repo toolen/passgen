@@ -3,7 +3,7 @@ import secrets
 from .constants import ALPHABET, MAX_LENGTH, MIN_LENGTH, REQUIRED_SEQUENCES
 
 
-def validate_length(length):
+def validate_length(length: int) -> None:
     if length is None:
         raise AssertionError("Must be not None")
 
@@ -17,7 +17,7 @@ def validate_length(length):
         raise AssertionError(f"Greater than the maximum length {MAX_LENGTH}")
 
 
-def get_password(length):
+def get_password(length: int) -> str:
     validate_length(length)
 
     password = []

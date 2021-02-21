@@ -47,11 +47,11 @@ jobs:
       - name: Run bandit
         run: poetry run bandit .
 
-      - name: Run bandit
-        run: poetry run bandit .
-
       - name: Run saftey
         run: poetry run safety check
+
+      - name: Run mypy
+        run: poetry run mypy --strict --ignore-missing-imports passgen
 
       - name: Test with pytest
         run: poetry run pytest --cov=passgen tests/
