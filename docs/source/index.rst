@@ -6,8 +6,8 @@
 Welcome to passgen's documentation!
 ===================================
 
-.. image:: https://travis-ci.org/toolen/passgen.svg?branch=master
-    :target: https://travis-ci.org/toolen/passgen
+.. image:: https://github.com/toolen/passgen/workflows/CI/badge.svg?branch=master
+    :target: https://github.com/toolen/passgen/workflows/CI
     :alt: Build Status
 
 .. image:: https://coveralls.io/repos/github/toolen/passgen/badge.svg?branch=master
@@ -39,3 +39,11 @@ Contents
    usage
    settings
    deploy
+
+
+Indices and tables
+==================
+
+* :ref:`genindex`
+* :ref:`modindex`
+* :ref:`search`

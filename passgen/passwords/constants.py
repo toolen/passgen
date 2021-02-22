@@ -1,3 +1,4 @@
+"""This file contains application constants."""
 import string
 
 MIN_LENGTH = 4

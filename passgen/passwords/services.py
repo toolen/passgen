@@ -1,9 +1,17 @@
+"""This file contains service methods to generate passwords."""
 import secrets
 
 from .constants import ALPHABET, MAX_LENGTH, MIN_LENGTH, REQUIRED_SEQUENCES
 
 
 def validate_length(length: int) -> None:
+    """
+    Validate password length.
+
+    :param int length: password length
+    :return: None
+    :raises AssertionError: if length is invalid
+    """
     if length is None:
         raise AssertionError("Must be not None")
 
@@ -18,6 +26,13 @@ def validate_length(length: int) -> None:
 
 
 def get_password(length: int) -> str:
+    """
+    Return password.
+
+    :param int length: password length
+    :return: password
+    :rtype: str
+    """
     validate_length(length)
 
     password = []

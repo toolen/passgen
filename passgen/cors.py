@@ -1,3 +1,4 @@
+"""This file contains CORS methods."""
 import aiohttp_cors
 from aiohttp import web
 from aiohttp_cors import CorsConfig, ResourceOptions
@@ -21,6 +22,13 @@ default_methods = (
 
 
 def init_cors(app: web.Application) -> CorsConfig:
+    """
+    Initialize application with CORS.
+
+    :param web.Application app: instance of application
+    :return: instance of application with initialized CORS
+    :rtype: web.Application
+    """
     cors_origin = app["settings"]["cors_origin"]
     cors = aiohttp_cors.setup(
         app,

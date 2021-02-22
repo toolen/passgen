@@ -44,6 +44,9 @@ jobs:
       - name: Run flake8
         run: poetry run flake8 passgen/ tests/
 
+      - name: Run pydocstyle
+        run: poetry run pydocstyle --add-ignore=D104 passgen/
+
       - name: Run bandit
         run: poetry run bandit .
 

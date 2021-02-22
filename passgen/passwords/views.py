@@ -1,3 +1,4 @@
+"""This file contains application views."""
 from aiohttp import web
 from aiohttp.web_response import Response
 
@@ -6,6 +7,13 @@ from .services import get_password
 
 
 async def passwords(request: web.Request) -> Response:
+    """
+    Return response with generated password.
+
+    :param web.Request request: object contains all information
+    about incoming HTTP request
+    :return: Response with generated password
+    """
     try:
         length_str = request.rel_url.query.get("length", DEFAULT_LENGTH)
         length = int(length_str)
