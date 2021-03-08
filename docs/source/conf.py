@@ -15,7 +15,7 @@
 import os
 import sys
 
-sys.path.insert(0, os.path.abspath('../passgen'))
+sys.path.insert(0, os.path.abspath('../../'))
 
 
 # -- Project information -----------------------------------------------------
@@ -42,6 +42,7 @@ release = "2.0.0"
 extensions = [
     "sphinx.ext.autodoc",
     "sphinx.ext.coverage",
+    "autoapi.extension",
 ]
 
 # Add any paths that contain templates here, relative to this directory.
@@ -77,7 +78,7 @@ pygments_style = "sphinx"
 # The theme to use for HTML and HTML Help pages.  See the documentation for
 # a list of builtin themes.
 #
-html_theme = "alabaster"
+html_theme = "sphinx_rtd_theme"
 
 # Theme options are theme-specific and customize the look and feel of a theme
 # further.  For a list of options available for each theme, see the
@@ -158,3 +159,5 @@ texinfo_documents = [
 
 
 # -- Extension configuration -------------------------------------------------
+autoapi_dirs = ['../../passgen']
+autoapi_add_toctree_entry = False
