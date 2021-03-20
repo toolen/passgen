@@ -2,6 +2,7 @@
 __pycache__/
 *.py[cod]
 *$py.class
+.mypy_cache/
 
 # Unit test / coverage reports
 .pytest_cache/
@@ -17,3 +18,4 @@ docs/build
 
 # IDE
 .idea/
+.vscode/
