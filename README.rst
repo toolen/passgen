@@ -23,8 +23,6 @@ Passgen
 
 **Passgen** is a simple service for generating passwords with guaranteed presence of uppercase and lowercase letters, numbers and special characters.
 
--------------------
-
 Try
 ==========
 
