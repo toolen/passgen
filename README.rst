@@ -26,7 +26,7 @@ Passgen
 Try
 ==========
 
-`Demo <https://toolen.github.io/passgen-web-client/>`_
+`Demo <https://passgen.zakharov.cc>`_
 
 
 Usage
