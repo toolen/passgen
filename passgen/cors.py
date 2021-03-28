@@ -1,18 +1,21 @@
 """This file contains CORS methods."""
 import aiohttp_cors
 from aiohttp import web
-from aiohttp_cors import CorsConfig, ResourceOptions
+from aiohttp_cors import ResourceOptions
 
 default_headers = (
-    "accept",
-    "accept-encoding",
-    "authorization",
-    "content-type",
-    "dnt",
-    "origin",
-    "user-agent",
-    "x-csrftoken",
-    "x-requested-with",
+    'Host',
+    'User-Agent',
+    'Accept',
+    'Accept-Language',
+    'Accept-Encoding',
+    'Access-Control-Request-Method',
+    'Access-Control-Request-Headers',
+    'Origin',
+    'Connection',
+    'Pragma',
+    'Cache-Control',
+    'Content-Type',
 )
 
 default_methods = (
@@ -21,7 +24,7 @@ default_methods = (
 )
 
 
-def init_cors(app: web.Application) -> CorsConfig:
+def init_cors(app: web.Application) -> None:
     """
     Initialize application with CORS.
 
@@ -38,5 +41,5 @@ def init_cors(app: web.Application) -> CorsConfig:
             )
         },
     )
-
-    return cors
+    for route in list(app.router.routes()):
+        cors.add(route)
