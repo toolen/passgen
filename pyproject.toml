@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "passgen"
-version = "2.0.0"
+version = "2.0.1"
 description = "A simple service for generating passwords with guaranteed presence of uppercase and lowercase letters, numbers and special characters."
 authors = ["Dmitrii Zakharov <dmitrii@zakharov.cc>"]
 license = "MIT"

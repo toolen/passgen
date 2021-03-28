@@ -88,4 +88,4 @@ Docker
 
 Use docker container::
 
-    docker run -d -p 8080:8080 --restart always toolen/passgen:2.0.0
+    docker run -d -p 8080:8080 --restart always toolen/passgen:2.0.1
