@@ -2,6 +2,15 @@
 import os
 from typing import Union
 
+BOOL_TRUE_STRINGS = (
+    "true",
+    "on",
+    "ok",
+    "y",
+    "yes",
+    "1",
+)
+
 
 def get_bool_env(key: str, default: bool = False) -> bool:
     """
@@ -12,17 +21,9 @@ def get_bool_env(key: str, default: bool = False) -> bool:
     :return: boolean value from environment variable
     :rtype: bool
     """
-    bool_true_strings = (
-        "true",
-        "on",
-        "ok",
-        "y",
-        "yes",
-        "1",
-    )
     value: Union[str, None] = os.getenv(key)
     if value is not None:
-        return value.lower() in bool_true_strings
+        return value.lower() in BOOL_TRUE_STRINGS
     else:
         return bool(default)
 
