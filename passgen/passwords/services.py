@@ -26,7 +26,7 @@ def validate_length(length: int) -> None:
         raise AssertionError("Must be an integer")
 
     if length < MIN_LENGTH:
-        raise AssertionError(f"Less than the minimum length {MIN_LENGTH}.")
+        raise AssertionError(f"Less than the minimum length {MIN_LENGTH}")
 
     if length > MAX_LENGTH:
         raise AssertionError(f"Greater than the maximum length {MAX_LENGTH}")
