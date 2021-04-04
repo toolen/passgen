@@ -61,6 +61,14 @@ You can specify a length of generated password by adding the "length" parameter 
     https://passgen.zakharov.cc/api/v1/passwords?length=6
 
 
+Exclude punctuation marks
+-------------------------
+
+You can generate password without punctuation marks by adding the "exclude_punctuation" parameter to your request. Valid values for the parameter: true, on, ok, y, yes, 1::
+
+    https://passgen.zakharov.cc/api/v1/passwords?exclude_punctuation=true
+
+
 Settings
 ==========
 
@@ -88,4 +96,4 @@ Docker
 
 Use docker container::
 
-    docker run -d -p 8080:8080 --restart always toolen/passgen:2.0.1
+    docker run -d -p 8080:8080 --restart=always --cap-drop=ALL toolen/passgen:2.1.0

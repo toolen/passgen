@@ -1,7 +1,14 @@
 """This file contains service methods to generate passwords."""
 import secrets
 
-from .constants import ALPHABET, MAX_LENGTH, MIN_LENGTH, REQUIRED_SEQUENCES
+from .constants import (
+    ALPHABET,
+    ALPHABET_WO_PUNCTUATION,
+    MAX_LENGTH,
+    MIN_LENGTH,
+    REQUIRED_SEQUENCES,
+    REQUIRED_SEQUENCES_WO_PUNCTUATION,
+)
 
 
 def validate_length(length: int) -> None:
@@ -25,22 +32,29 @@ def validate_length(length: int) -> None:
         raise AssertionError(f"Greater than the maximum length {MAX_LENGTH}")
 
 
-def get_password(length: int) -> str:
+def get_password(length: int, exclude_punctuation: bool = False) -> str:
     """
     Return password.
 
     :param int length: password length
+    :param bool exclude_punctuation: generate password without special chars
     :return: password
     :rtype: str
     """
     validate_length(length)
 
+    alphabet = ALPHABET_WO_PUNCTUATION if exclude_punctuation else ALPHABET
+    sequences = (
+        REQUIRED_SEQUENCES_WO_PUNCTUATION if exclude_punctuation else REQUIRED_SEQUENCES
+    )
+
     password = []
     for _ in range(0, length):
-        password.append(secrets.choice(ALPHABET))
+        password.append(secrets.choice(alphabet))
 
     idx_list = list([x for x in range(0, length)])
-    for sequence in REQUIRED_SEQUENCES:
+
+    for sequence in sequences:
         idx = secrets.choice(idx_list)
         idx_list.remove(idx)
         password[idx] = secrets.choice(sequence)

@@ -1,6 +1,11 @@
 """This file contains application views."""
+from typing import Final
+
+import multidict
 from aiohttp import web
 from aiohttp.web_response import Response
+
+from passgen.utils import BOOL_TRUE_STRINGS
 
 from .constants import DEFAULT_LENGTH
 from .services import get_password
@@ -15,9 +20,16 @@ async def passwords(request: web.Request) -> Response:
     :return: Response with generated password
     """
     try:
-        length_str = request.rel_url.query.get("length", DEFAULT_LENGTH)
-        length = int(length_str)
-        password = get_password(length)
+        query_params: Final[multidict.MultiDict[str]] = request.rel_url.query
+
+        raw_length: str = query_params.get("length", str(DEFAULT_LENGTH))
+        length: int = int(raw_length)
+
+        raw_exclude_punctuation: str = query_params.get("exclude_punctuation", "")
+        exclude_punctuation: bool = raw_exclude_punctuation in BOOL_TRUE_STRINGS
+
+        password = get_password(length, exclude_punctuation)
+
         return web.json_response({"password": password})
     except ValueError:
         return web.json_response(

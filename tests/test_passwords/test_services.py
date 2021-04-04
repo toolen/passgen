@@ -1,6 +1,11 @@
 import pytest
 
-from passgen.passwords.constants import MAX_LENGTH, MIN_LENGTH
+from passgen.passwords.constants import (
+    DEFAULT_LENGTH,
+    MAX_LENGTH,
+    MIN_LENGTH,
+    PUNCTUATION,
+)
 from passgen.passwords.services import get_password
 
 
@@ -41,3 +46,9 @@ def test_get_password_w_various_valid_length():
         password = get_password(length)
 
         assert len(password) == length
+
+
+def test_get_password_wo_punctuation():
+    password = get_password(DEFAULT_LENGTH, True)
+    for char in PUNCTUATION:
+        assert char not in password
