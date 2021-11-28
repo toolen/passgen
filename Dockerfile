@@ -1,12 +1,10 @@
-FROM python:3.8.8-slim-buster
+FROM python:3.10.0-slim-bullseye@sha256:3524d9553dd1ea815d9e3ff07a0ccafe878a9403fb5f9956dc6ad86075ac345f
 
 LABEL maintainer="dmitrii@zakharov.cc"
 
 ENV \
     # Tell apt-get we're never going to be able to give manual feedback:
     DEBIAN_FRONTEND=noninteractive \
-    # build:
-    BUILD_ONLY_PACKAGES='wget' \
     # python:
     PYTHONFAULTHANDLER=1 \
     PYTHONUNBUFFERED=1 \
@@ -19,14 +17,14 @@ ENV \
     # tini:
     TINI_VERSION=v0.19.0 \
     # poetry:
-    POETRY_VERSION=1.1.5 \
+    POETRY_VERSION=1.1.12 \
     POETRY_NO_INTERACTION=1 \
     POETRY_VIRTUALENVS_CREATE=false \
     POETRY_CACHE_DIR='/var/cache/pypoetry' \
     PATH="$PATH:/root/.poetry/bin" \
     # passgen
     PASSGEN_CORS_ENABLED="True" \
-    GUNICORN_CMD_ARGS="-b 0.0.0.0:8080"
+    GUNICORN_CMD_ARGS=""
 
 # System deps:
 RUN set -ex \
@@ -36,20 +34,19 @@ RUN set -ex \
     && apt-get -y upgrade \
     # Install a new package, without unnecessary recommended packages:
     && apt-get install --no-install-recommends -y \
-        # Defining build-time-only dependencies:
-        $BUILD_ONLY_PACKAGES \
+        curl=7.74.0-1.3+b1 \
     # Installing `tini` utility:
     # https://github.com/krallin/tini
-    && wget "https://github.com/krallin/tini/releases/download/${TINI_VERSION}/tini" \
-    && wget "https://github.com/krallin/tini/releases/download/${TINI_VERSION}/tini.sha256sum" \
+    && curl -OL "https://github.com/krallin/tini/releases/download/${TINI_VERSION}/tini" \
+    && curl -OL "https://github.com/krallin/tini/releases/download/${TINI_VERSION}/tini.sha256sum" \
     && sha256sum -c tini.sha256sum \
     && mv tini /usr/local/bin/tini \
     && chmod +x /usr/local/bin/tini \
+    # Upgrading pip
+    && pip install --no-cache-dir -U pip==21.3.1 \
     # Installing `poetry` package manager:
     # https://github.com/python-poetry/poetry
     && pip install --no-cache-dir poetry==${POETRY_VERSION} \
-    # Removing build-time-only dependencies:
-    && apt-get remove -y $BUILD_ONLY_PACKAGES \
     # Cleaning cache:
     && apt-get purge -y --auto-remove -o APT::AutoRemove::RecommendsImportant=false \
     && apt-get clean -y \
@@ -72,6 +69,10 @@ COPY --chown=passgen:passgen ./passgen /srv/passgen/passgen/
 # Running as non-root user:
 USER passgen
 
+EXPOSE 8080
+
+HEALTHCHECK --interval=5s --timeout=10s --retries=3 CMD curl -sS http://127.0.0.1:8080/api/v1/health || exit 1
+
 CMD [ "/usr/local/bin/tini", "--", \
 "gunicorn", \
 "--worker-tmp-dir", "/dev/shm", \
@@ -80,4 +81,5 @@ CMD [ "/usr/local/bin/tini", "--", \
 "--threads=4", \
 "--log-file=-", \
 "--chdir", "/srv/passgen", \
+"--bind", "0.0.0.0:8080", \
 "passgen.app:create_app"]
