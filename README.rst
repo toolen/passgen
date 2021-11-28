@@ -17,10 +17,6 @@ Passgen
     :target: https://github.com/toolen/passgen/blob/master/LICENSE
     :alt: License
 
-.. image:: https://images.microbadger.com/badges/image/toolen/passgen.svg
-    :target: https://microbadger.com/images/toolen/passgen
-    :alt: Docker Image
-
 **Passgen** is a simple service for generating passwords with guaranteed presence of uppercase and lowercase letters, numbers and special characters.
 
 Try
