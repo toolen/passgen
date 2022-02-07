@@ -1,19 +1,8 @@
-# Byte-compiled / optimized / DLL files
-.git
-__pycache__/
-*.py[cod]
-*$py.class
+# Ignore everything
+**
 
-# Unit test / coverage reports
-.pytest_cache/
-tests/
-
-# Environments
-.env
-venv/
-
-# Docs
-docs/
-
-# Other
-dist/
+# Allow files and directories
+!/passgen
+!/healthcheck.py
+!/poetry.lock
+!/pyproject.toml
