@@ -15,8 +15,7 @@ async def passwords(request: web.Request) -> Response:
     """
     Return response with generated password.
 
-    :param web.Request request: object contains all information
-    about incoming HTTP request
+    :param web.Request request: object contains all information about incoming HTTP request
     :return: Response with generated password
     """
     try:
