@@ -50,7 +50,7 @@ ENV \
 RUN set -ex \
     && apk upgrade \
     && apk add --no-cache \
-        tini==0.19.0-r0 \
+        tini==0.19.0-r1 \
     && addgroup -g 1000 -S app \
     && adduser -h /app -G app -S -u 1000 app
 
