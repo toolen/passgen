@@ -92,4 +92,4 @@ Docker
 
 Use docker container::
 
-    docker run -d -p 8080:8080 --restart=always --cap-drop=ALL ghcr.io/toolen/passgen:2.2.1
+    docker run -d -p 8080:8080 --restart=always --cap-drop=ALL ghcr.io/toolen/passgen:2.2.2
