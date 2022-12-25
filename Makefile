@@ -2,8 +2,8 @@ package_name = passgen
 repository = toolen/passgen
 version = $(shell poetry version -s)
 tag = ghcr.io/$(repository):$(version)
-hadolint_version=2.8.0
-trivy_version=0.23.0
+hadolint_version=2.12.0
+trivy_version=0.35.0
 
 image:
 	export DOCKER_BUILDKIT=1

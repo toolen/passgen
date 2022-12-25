@@ -1,38 +1,41 @@
 [tool.poetry]
 name = "passgen"
-version = "2.2.1"
+version = "2.2.2"
 description = "A simple service for generating passwords with guaranteed presence of uppercase and lowercase letters, numbers and special characters."
 authors = ["Dmitrii Zakharov <dmitrii@zakharov.cc>"]
 license = "MIT"
 
 [tool.poetry.dependencies]
-python = "^3.8"
-aiohttp = "3.8.1"
+python = "^3.8.1"
+aiohttp = "3.8.3"
 aiohttp_cors = "0.7.0"
 gunicorn = "20.1.0"
 
 [tool.poetry.dev-dependencies]
-pytest-aiohttp = "0.3.0"
-pytest-cov = "3.0.0"
+pytest-aiohttp = "1.0.4"
+pytest-cov = "4.0.0"
 coveralls = "3.3.1"
-flake8 = "4.0.1"
-pytest = "6.2.5"
-black = "22.1.0"
-isort = "5.10.1"
-bandit = "1.7.2"
-safety = "1.10.3"
-mypy = "0.931"
+flake8 = "6.0.0"
+pytest = "7.2.0"
+black = "22.12.0"
+isort = "5.11.4"
+bandit = "1.7.4"
+safety = "2.3.5"
+mypy = "0.991"
 pydocstyle = "6.1.1"
 radon = "5.1.0"
-Sphinx = "4.4.0"
-sphinx-rtd-theme = "1.0.0"
-sphinx-autoapi = "1.8.4"
+Sphinx = "5.3.0"
+sphinx-rtd-theme = "1.1.1"
+sphinx-autoapi = "2.0.0"
 
 [tool.black]
 skip-string-normalization = 1
 
 [tool.isort]
 profile = "black"
+
+[tool.pytest.ini_options]
+asyncio_mode = "auto"
 
 [build-system]
 requires = ["poetry-core>=1.0.0"]
